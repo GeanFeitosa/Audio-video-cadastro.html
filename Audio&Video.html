@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio e Video</title>
+</head>
+<body>
+    <h1>API de Geocalização</h1>
+    <button onclick="Geolocation()">Obter Localização</button>
+    <p id="status"></p>
+    <p id="location"></p>
+
+    <Script>
+        function getlocation() {
+            const status = document.getElementById('status');
+            const location = document.getElementById('location');
+            if (navigation.geolocation) {
+                status.textContent = 'buscando localização...';
+                navigation.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latidude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        status.textContent = 'Localização encontrada!';
+                        location.textContent = 'Latitude: $(latitude), Longitude $(longitude)';
+                    },
+                    function(erro) {
+                        status.textContent = 'Não foi possivel obter a localização';
+                    }
+                );
+            } else {
+                status.textContent = 'geolocalização não é suportada pelo seu navegador.';
+            }
+        }
+    </Script>
+   
+   <!-- audio e video -->
+
+    <audio controls>
+  <source src="musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta o elemento de áudio.
+</audio>   
+
+    <video width="400">
+        <source src="youtube.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de video.
+    </video>
+<!--api de locazição simples -->
+    <iframe width="873" height="491" src="https://www.youtube.com/embed/SthspBpJvMg" title="Dentro da Escotilha do Chefe: IS-7 Parte 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></width=>
+  <button onclick="mostrarLocalizacao()">Mostrar minha localização</button>
+ 
+  <p id="localizacao"></p>
+ 
+  <script>
+    function mostrarLocalizacao() {
+      navigator.geolocation.getCurrentPosition(function(posicao) {
+        const latitude = posicao.coords.latitude;
+        const longitude = posicao.coords.longitude;
+ 
+        document.getElementById("localizacao").innerText =
+          "Latitude: " + latitude + " | Longitude: " + longitude;
+      });
+    }
+  </script>
+    </body>
+</html>
